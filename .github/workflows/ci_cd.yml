@@ -1,0 +1,38 @@
+name: CI/CD Pipeline
+
+on:
+   push:
+      branches:
+      - master
+   pull_request:
+      branches:
+      - master
+      
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      
+      steps:
+      -  name: Checkout code
+         uses: actions/checkout@v2
+         
+      -  name: Set up JDK 17
+         uses: actions/setup-java@v2
+         with:
+            java-version: '17'
+            distribution: temurin
+      
+      -  name: Build and Test with Maven
+         run: mvn clean install -DskipTests
+         
+      -  name: Deploy to EB
+         uses: einaregilsson/beanstalk-deploy@v22
+         with:
+            aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+            aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+            application_name: PracticeGitAction
+            environment_name: PracticeGitAction-env
+            existing_bucket_name: elasticbeanstalk-us-east-1-277707100561
+            region: us-east-1
+            version_label: ${{ github.sha }}
+            deployment_package: target/explore-0.0.1-SNAPSHOT.jar
