@@ -6,12 +6,7 @@
       "image": "dhivakar15/docker-explore",
       "hostname": "web",
       "essential": true,
-      "memory": 128,
-	  "ports": [
-		{
-			"ContainerPort": "8080"
-		}
-	  ]
+      "memory": 128
     }
 	]
 }
