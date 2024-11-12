@@ -39,9 +39,9 @@ jobs:
          with:
             aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
             aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-            application_name: PracticeGitAction
-            environment_name: PracticeGitAction-env
-            existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
+            application_name: myfirstapp
+            environment_name: Myfirstapp-env
+            existing_bucket_name: elasticbeanstalk-us-east-1-277707100561
             region: us-east-1
             version_label: ${{ github.sha }} 
             deployment_package: deploy.zip
