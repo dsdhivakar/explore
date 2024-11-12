@@ -1,0 +1,17 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "dhivakar15/docker-explore",
+      "hostname": "web",
+      "essential": true,
+      "memory": 128,
+	  "ports": [
+		{
+			"ContainerPort": "8080"
+		}
+	  ]
+    }
+	]
+}
