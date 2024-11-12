@@ -27,7 +27,7 @@ jobs:
          
       -  name: run scripts and push to registry
          run: |
-           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
            docker build -f Dockerfile.dev -t dhivakar15/docker-explore .
            docker push dhivakar15/docker-explore
            
